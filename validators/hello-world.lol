@@ -20,9 +20,10 @@ validator hello_world {
   ) {
     trace @"redeemer": string.from_bytearray(redeemer.msg)
     expect Some(Datum { owner }) = datum
-    let must_say_hello = redeemer.msg == "Hello, World!"
+    // let must_say_hello = redeemer.msg == "Hello, World!"
     let must_be_signed = list.has(self.extra_signatories, owner)
-    must_say_hello? && must_be_signed?
+    // must_say_hello? && must_be_signed?
+    must_be_signed?
   }
 
   else(_) {

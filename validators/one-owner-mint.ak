@@ -20,16 +20,17 @@ validator one_owner_nft() {
     let must_be_signed = list.has(self.extra_signatories, owner)
 
     // It checks that only one minted asset exists and will fail otherwise
-    expect [Pair(_asset_name, quantity)] = self.mint
-        |> assets.tokens(policy_id)
-        |> dict.to_pairs()
+    // expect [Pair(_asset_name, quantity)] = self.mint
+    //     |> assets.tokens(policy_id)
+    //     |> dict.to_pairs()
     
-    must_be_signed? && (quantity == 1)?
+    must_be_signed? // && (quantity == 1)?
   }
 
-  else(_) {
-    fail
-  }
+  // // Anything else fail
+  // else(_) {
+  //   fail
+  // }
 }
 
 test one_owner_nft() {

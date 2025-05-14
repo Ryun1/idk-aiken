@@ -12,40 +12,54 @@
   },
   "validators": [
     {
-      "title": "hello_world.hello_world.spend",
-      "datum": {
+      "title": "one_owner_mint.one_owner_nft.mint",
+      "redeemer": {
         "title": "datum",
         "schema": {
-          "$ref": "#/definitions/hello_world~1Datum"
+          "$ref": "#/definitions/Option$one_owner_mint~1Datum"
         }
       },
-      "redeemer": {
-        "title": "redeemer",
-        "schema": {
-          "$ref": "#/definitions/hello_world~1Redeemer"
-        }
-      },
-      "compiledCode": "59010601010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900118031baa00189919912cc004cdc3a400060126ea801626464b3001300f0028acc004cdc3a400060166ea800e2b30013371e6eb8c038c030dd5003a450d48656c6c6f2c20576f726c642100899199119801001000912cc00400629422b30013371e6eb8c04400400e2946266004004602400280690101bac300f30103010301030103010301030103010300d3754601e0146eb8c038c030dd5180718061baa0038a5040291640291640346eb8c034004c028dd5002c5900818050009805180580098039baa0018b200a30070013007300800130070013003375400f149a26cac80081",
-      "hash": "2499e3a64ae4228a1e63ce6f131b279487d9780f132a0698e8b1f0f2"
+      "compiledCode": "59011d01010029800aba2aba1aab9faab9eaab9dab9a48888896600264653001300700198039804000cdc3a400130070024888966002600460106ea800e33001375c601660126ea800e2b30013002300837540091323322330020020012259800800c528456600266e3cdd71807000801c528c4cc008008c03c00500a201a37586018601a601a601a601a601a601a601a601a60146ea8008dd7180598049baa300b3009375400916401d300837540089112cc004c014006264b300130100018992cc004c01cc034dd5000c4c8c96600260260050068b2022375c6022002601c6ea80062c8060c03c0062c8070c030dd5003c56600266e1d20020018acc004c030dd5003c00a2c806a2c805100a22c8038600e00260066ea801e29344d9590011",
+      "hash": "e9247839dfacb80a46d0c6f2a11a1cbc6a27ea969a0065a3bb56727b"
     },
     {
-      "title": "hello_world.hello_world.else",
+      "title": "one_owner_mint.one_owner_nft.else",
       "redeemer": {
         "schema": {}
       },
-      "compiledCode": "59010601010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900118031baa00189919912cc004cdc3a400060126ea801626464b3001300f0028acc004cdc3a400060166ea800e2b30013371e6eb8c038c030dd5003a450d48656c6c6f2c20576f726c642100899199119801001000912cc00400629422b30013371e6eb8c04400400e2946266004004602400280690101bac300f30103010301030103010301030103010300d3754601e0146eb8c038c030dd5180718061baa0038a5040291640291640346eb8c034004c028dd5002c5900818050009805180580098039baa0018b200a30070013007300800130070013003375400f149a26cac80081",
-      "hash": "2499e3a64ae4228a1e63ce6f131b279487d9780f132a0698e8b1f0f2"
+      "compiledCode": "59011d01010029800aba2aba1aab9faab9eaab9dab9a48888896600264653001300700198039804000cdc3a400130070024888966002600460106ea800e33001375c601660126ea800e2b30013002300837540091323322330020020012259800800c528456600266e3cdd71807000801c528c4cc008008c03c00500a201a37586018601a601a601a601a601a601a601a601a60146ea8008dd7180598049baa300b3009375400916401d300837540089112cc004c014006264b300130100018992cc004c01cc034dd5000c4c8c96600260260050068b2022375c6022002601c6ea80062c8060c03c0062c8070c030dd5003c56600266e1d20020018acc004c030dd5003c00a2c806a2c805100a22c8038600e00260066ea801e29344d9590011",
+      "hash": "e9247839dfacb80a46d0c6f2a11a1cbc6a27ea969a0065a3bb56727b"
     }
   ],
   "definitions": {
-    "ByteArray": {
-      "dataType": "bytes"
+    "Option$one_owner_mint/Datum": {
+      "title": "Option",
+      "anyOf": [
+        {
+          "title": "Some",
+          "description": "An optional value.",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "$ref": "#/definitions/one_owner_mint~1Datum"
+            }
+          ]
+        },
+        {
+          "title": "None",
+          "description": "Nothing.",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
     },
     "aiken/crypto/VerificationKeyHash": {
       "title": "VerificationKeyHash",
       "dataType": "bytes"
     },
-    "hello_world/Datum": {
+    "one_owner_mint/Datum": {
       "title": "Datum",
       "anyOf": [
         {
@@ -56,22 +70,6 @@
             {
               "title": "owner",
               "$ref": "#/definitions/aiken~1crypto~1VerificationKeyHash"
-            }
-          ]
-        }
-      ]
-    },
-    "hello_world/Redeemer": {
-      "title": "Redeemer",
-      "anyOf": [
-        {
-          "title": "Redeemer",
-          "dataType": "constructor",
-          "index": 0,
-          "fields": [
-            {
-              "title": "msg",
-              "$ref": "#/definitions/ByteArray"
             }
           ]
         }
